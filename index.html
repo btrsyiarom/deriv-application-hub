@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Deriv Application Hub — Careers Portal</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            deriv: {
+              red: '#ff444f',
+              redHover: '#e02834',
+              redLight: '#fff1f2',
+              redBorder: '#fed7da',
+              dark: '#111827',
+              gray: '#64748b'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @keyframes pulse-ring {
+      0% { box-shadow: 0 0 0 0 rgba(255, 68, 79, 0.45); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 68, 79, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 68, 79, 0); }
+    }
+    .pulse-glow {
+      animation: pulse-ring 2s infinite ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-[#f8f9fb] text-slate-800 min-h-screen font-sans antialiased selection:bg-deriv-red selection:text-white pb-14">
+
+  <!-- TOP BAR: Interactive Demo Switcher (Clean Light / Red Style) -->
+  <div class="bg-white border-b border-slate-200 text-xs py-2 px-4 sticky top-0 z-50 shadow-xs">
+    <div class="max-w-4xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center space-x-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-deriv-red animate-ping"></span>
+        <span class="font-bold text-slate-700">Prototype Demo:</span>
+        <span class="text-slate-500">Test Candidate Stages &rarr;</span>
+      </div>
+      <div class="flex items-center space-x-1.5 overflow-x-auto">
+        <button onclick="setStage(1)" id="btn-stage-1" class="px-2.5 py-1 rounded-md transition text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">1. Received</button>
+        <button onclick="setStage(2)" id="btn-stage-2" class="px-2.5 py-1 rounded-md transition text-xs font-semibold bg-deriv-red text-white shadow-xs">2. Resume Review (Default)</button>
+        <button onclick="setStage(3)" id="btn-stage-3" class="px-2.5 py-1 rounded-md transition text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">3. Interview</button>
+        <button onclick="setStage(4)" id="btn-stage-4" class="px-2.5 py-1 rounded-md transition text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">4. Decision</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION HEADER: Deriv White & Red Branding -->
+  <nav class="bg-white border-b border-slate-200">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <!-- Deriv Iconic Red Logo Mark -->
+        <div class="w-10 h-10 rounded-xl bg-deriv-red flex items-center justify-center font-black text-white text-xl shadow-md shadow-deriv-red/20">
+          d
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-lg font-extrabold tracking-tight text-slate-900">deriv</span>
+            <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-deriv-redLight text-deriv-red border border-deriv-redBorder">
+              Careers Portal
+            </span>
+          </div>
+          <p class="text-xs text-slate-500 font-medium">Deriv Application Hub</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          Live Application Active
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN DASHBOARD (ONE PAGE ONLY) -->
+  <main class="max-w-4xl mx-auto px-4 sm:px-6 pt-6">
+
+    <!-- 1. CANDIDATE PROFILE & APPLICATION CARD -->
+    <div class="bg-white border border-slate-200 rounded-2xl p-6 sm:p-7 shadow-sm">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center gap-1.5 text-xs font-bold text-deriv-red uppercase tracking-wider mb-1.5">
+            <span>🎯</span> Deriv Application Hub
+          </div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+            Frontend Engineer (React / TypeScript)
+          </h1>
+          <p class="text-slate-600 text-sm mt-1">
+            Candidate: <strong class="text-slate-800">Alex Tan</strong> &bull; Cyberjaya Campus / Hybrid
+          </p>
+        </div>
+
+        <div class="bg-slate-50 border border-slate-200 p-4 rounded-xl text-xs space-y-1.5 sm:text-right">
+          <div><span class="text-slate-500">Application Ref:</span> <span class="font-mono font-bold text-slate-900">#DER-98240</span></div>
+          <div><span class="text-slate-500">Date Received:</span> <span class="font-semibold text-slate-800">Nov 14, 2026 &bull; 09:30 AM</span></div>
+          <div class="text-[11px] text-emerald-600 font-semibold flex sm:justify-end items-center gap-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+            Automated Intake Verified
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. DOMINO'S STYLE VISUAL STEPPER TIMELINE -->
+    <div class="mt-6 bg-white border border-slate-200 rounded-2xl p-6 sm:p-7 shadow-sm">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-base font-bold text-slate-900">Live Stage Tracker</h2>
+          <p class="text-xs text-slate-500 mt-0.5">Transparent real-time progress of your application review.</p>
+        </div>
+        <span id="current-stage-badge" class="text-xs font-bold px-3 py-1 rounded-full bg-deriv-redLight text-deriv-red border border-deriv-redBorder">
+          Stage 2 of 4: Resume Screen
+        </span>
+      </div>
+
+      <!-- Stepper Visual -->
+      <div class="relative px-2">
+        <!-- Background Track -->
+        <div class="absolute top-5 left-8 right-8 h-1 bg-slate-100 -z-0"></div>
+        <!-- Active Progress Line -->
+        <div id="progress-line" class="absolute top-5 left-8 h-1 bg-gradient-to-r from-emerald-500 to-deriv-red transition-all duration-500 -z-0" style="width: 38%;"></div>
+
+        <!-- 4 Step Nodes -->
+        <div class="grid grid-cols-4 relative z-10 text-center gap-1">
+
+          <!-- Step 1: Completed -->
+          <div id="step-1" class="flex flex-col items-center">
+            <div id="step-icon-1" class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shadow-sm ring-4 ring-emerald-50">
+              ✓
+            </div>
+            <span class="text-xs font-bold mt-3 text-slate-900">Application Received</span>
+            <span class="text-[11px] text-emerald-600 font-semibold hidden sm:block">Completed</span>
+          </div>
+
+          <!-- Step 2: Active Glowing Pulse (Currently with Sarah from Tech Recruiting) -->
+          <div id="step-2" class="flex flex-col items-center">
+            <div id="step-icon-2" class="w-10 h-10 rounded-full bg-deriv-red text-white flex items-center justify-center font-bold text-sm shadow-md pulse-glow ring-4 ring-deriv-redLight">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+            </div>
+            <span class="text-xs font-bold mt-3 text-slate-900">Resume Screen</span>
+            <!-- Prompt Specific: "Currently with Sarah from Tech Recruiting" -->
+            <span id="step-sub-2" class="text-[11px] font-bold text-deriv-red px-2 py-0.5 mt-1 rounded-full bg-deriv-redLight border border-deriv-redBorder inline-block">
+              Currently with Sarah
+            </span>
+          </div>
+
+          <!-- Step 3: Upcoming -->
+          <div id="step-3" class="flex flex-col items-center">
+            <div id="step-icon-3" class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 border border-slate-300 flex items-center justify-center font-bold text-sm">
+              3
+            </div>
+            <span class="text-xs font-semibold mt-3 text-slate-500">Take-Home / Interview</span>
+            <span class="text-[11px] text-slate-400 hidden sm:block">Upcoming Stage</span>
+          </div>
+
+          <!-- Step 4: Upcoming -->
+          <div id="step-4" class="flex flex-col items-center">
+            <div id="step-icon-4" class="w-10 h-10 rounded-full bg-slate-100 text-slate-400 border border-slate-300 flex items-center justify-center font-bold text-sm">
+              4
+            </div>
+            <span class="text-xs font-semibold mt-3 text-slate-500">Final Decision</span>
+            <span class="text-[11px] text-slate-400 hidden sm:block">Offer or Feedback</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Recruiter Reviewer Card -->
+      <div class="mt-8 bg-deriv-redLight/50 border border-deriv-redBorder rounded-xl p-4 flex items-center justify-between flex-wrap gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-deriv-red text-white flex items-center justify-center font-extrabold text-sm shadow-sm">
+            SC
+          </div>
+          <div>
+            <div class="text-xs text-slate-500">Primary Reviewer:</div>
+            <div class="text-sm font-bold text-slate-900">Sarah Chen <span class="font-normal text-xs text-slate-600">&bull; Lead Tech Recruiter</span></div>
+          </div>
+        </div>
+        <div class="text-xs text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200">
+          👀 Sarah is actively assessing your GitHub repos & project fit.
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. REASSURANCE WIDGET & 4. HELPFUL NEXT STEPS (2-COLUMN GRID) -->
+    <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <!-- LEFT: REASSURANCE WIDGET -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 text-deriv-red text-xs font-extrabold uppercase tracking-wider mb-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            Reassurance & Peace of Mind
+          </div>
+          <h3 id="reassurance-title" class="text-lg font-bold text-slate-900 mb-1">
+            "Your application is being actively reviewed."
+          </h3>
+          <p id="reassurance-note" class="text-xs text-slate-600 leading-relaxed mt-1">
+            <strong>No action needed right now!</strong> We value your time. Our hiring leads never leave candidates hanging without a definitive answer.
+          </p>
+        </div>
+
+        <div class="mt-5 space-y-3">
+          <!-- Expected update line (countdown removed) -->
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-medium">Timeline:</span>
+            <span id="target-date-display" class="font-bold text-deriv-red bg-deriv-redLight px-2.5 py-1 rounded border border-deriv-redBorder">
+              Expected update by Fri, Nov 20
+            </span>
+          </div>
+
+          <!-- Delay Safety Net Line -->
+          <div class="p-3 rounded-xl bg-deriv-redLight/40 border border-deriv-redBorder/70 flex items-start gap-2.5 text-xs text-slate-600">
+            <span class="text-deriv-red font-bold text-sm leading-none mt-0.5">🛡️</span>
+            <p class="leading-relaxed">
+              <strong class="text-slate-800">Delay safety net:</strong> If there's any delay beyond Friday, we'll email you a revised date — never radio silence.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: WHAT HAPPENS NEXT CARD -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-2 text-slate-700 text-xs font-extrabold uppercase tracking-wider mb-2">
+            <svg class="w-4 h-4 text-deriv-red" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            Next Step
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">
+            What happens next
+          </h3>
+
+          <!-- Real next step in plain words -->
+          <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl mb-4">
+            <p class="text-xs font-medium text-slate-700 leading-relaxed">
+              Sarah will email you by Fri, Nov 20 with either a take home task or feedback. Nothing for you to do right now.
+            </p>
+          </div>
+
+          <!-- While you wait label -->
+          <div class="text-[11px] font-bold text-slate-500 uppercase tracking-wider mb-2">
+            While you wait
+          </div>
+
+          <!-- Links -->
+          <div class="space-y-2 text-xs">
+            <a href="https://deriv.com" target="_blank" class="p-2.5 rounded-xl bg-slate-50 hover:bg-deriv-redLight/60 border border-slate-200 hover:border-deriv-redBorder flex items-center justify-between transition group">
+              <div class="flex items-center gap-2.5">
+                <span class="text-base">📖</span>
+                <div>
+                  <div class="font-bold text-slate-800 group-hover:text-deriv-red">Deriv Engineering Culture Blog</div>
+                  <div class="text-[11px] text-slate-500">How our fintech frontend team builds scalable apps</div>
+                </div>
+              </div>
+              <span class="text-slate-400 group-hover:text-deriv-red font-bold">&rarr;</span>
+            </a>
+
+            <a href="https://deriv.com" target="_blank" class="p-2.5 rounded-xl bg-slate-50 hover:bg-deriv-redLight/60 border border-slate-200 hover:border-deriv-redBorder flex items-center justify-between transition group">
+              <div class="flex items-center gap-2.5">
+                <span class="text-base">🎯</span>
+                <div>
+                  <div class="font-bold text-slate-800 group-hover:text-deriv-red">Interview Prep FAQ</div>
+                  <div class="text-[11px] text-slate-500">Tips, tech stack review & what we look for</div>
+                </div>
+              </div>
+              <span class="text-slate-400 group-hover:text-deriv-red font-bold">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Small text link: "Have a question? Contact recruiting" -->
+        <div class="mt-4 pt-3 border-t border-slate-200">
+          <a href="mailto:recruiting@deriv.com" class="text-xs text-slate-500 hover:text-deriv-red transition inline-flex items-center gap-1">
+            Have a question? <span class="font-semibold text-deriv-red hover:underline">Contact recruiting &rarr;</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- BOTTOM REASSURANCE BANNER -->
+    <div class="mt-8 bg-white border border-slate-200 rounded-xl p-4 text-center text-xs text-slate-600 shadow-2xs">
+      <span class="font-bold text-slate-800">🛡️ Deriv Candidate Promise:</span> We never leave applicants in the dark. You will receive an official update by <strong class="text-deriv-red">Friday, Nov 20</strong>.
+    </div>
+
+  </main>
+
+  <!-- POPUP MODAL (For Updating Resume / Contact Details) -->
+  <div id="update-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-6 shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+        <h4 class="font-bold text-slate-900 text-sm flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-deriv-red"></span>
+          Update Resume or Contact Details
+        </h4>
+        <button onclick="toggleModal()" class="text-slate-400 hover:text-slate-700 text-lg">&times;</button>
+      </div>
+
+      <div class="mt-4 text-xs space-y-3.5">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Updated Portfolio or LinkedIn Link:</label>
+          <input type="text" placeholder="https://linkedin.com/in/... or github.com/..." class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-800 focus:outline-none focus:border-deriv-red text-xs">
+        </div>
+
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Note for Sarah (Recruiter):</label>
+          <textarea rows="3" placeholder="e.g. I have updated my resume with recent React projects / I have a competing offer deadline..." class="w-full bg-slate-50 border border-slate-200 rounded-lg p-2.5 text-slate-800 focus:outline-none focus:border-deriv-red text-xs"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-5 flex justify-end gap-2">
+        <button onclick="toggleModal()" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">Cancel</button>
+        <button onclick="saveModal()" class="px-4 py-1.5 rounded-lg text-xs font-bold bg-deriv-red text-white hover:bg-deriv-redHover shadow-xs">Send to Sarah</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAGE DEMO SWITCHER SCRIPT -->
+  <script>
+    const stages = {
+      1: {
+        badge: "Stage 1 of 4: Received",
+        progress: "12%",
+        title: "Your application has been received!",
+        note: "<strong>No action needed right now!</strong> We are confirming all your submitted documents are in order.",
+        target: "Expected update by Wed, Nov 15",
+        sub2: "Queueing Review"
+      },
+      2: {
+        badge: "Stage 2 of 4: Resume Screen",
+        progress: "38%",
+        title: "Your application is being actively reviewed.",
+        note: "<strong>No action needed right now!</strong> Sarah from Tech Recruiting is currently reviewing your projects and experience.",
+        target: "Expected update by Fri, Nov 20",
+        sub2: "Currently with Sarah"
+      },
+      3: {
+        badge: "Stage 3 of 4: Take-Home / Interview",
+        progress: "68%",
+        title: "You've been selected for an interview!",
+        note: "<strong>Action recommended:</strong> Check your email for your Calendly link to pick a 30-minute chat slot.",
+        target: "Expected update by Tue, Nov 25",
+        sub2: "Passed Screening ✓"
+      },
+      4: {
+        badge: "Stage 4 of 4: Final Decision",
+        progress: "100%",
+        title: "Final Decision & Offer Stage",
+        note: "<strong>Congratulations!</strong> The hiring committee has finalized your package details.",
+        target: "Decision ready today",
+        sub2: "Offer Prepared ✓"
+      }
+    };
+
+    function setStage(num) {
+      const s = stages[num];
+      document.getElementById('current-stage-badge').textContent = s.badge;
+      document.getElementById('progress-line').style.width = s.progress;
+      document.getElementById('reassurance-title').textContent = '"' + s.title + '"';
+      document.getElementById('reassurance-note').innerHTML = s.note;
+      document.getElementById('target-date-display').textContent = s.target;
+      document.getElementById('step-sub-2').textContent = s.sub2;
+
+      // Update button highlights
+      for (let i = 1; i <= 4; i++) {
+        const btn = document.getElementById('btn-stage-' + i);
+        if (i === num) {
+          btn.className = "px-2.5 py-1 rounded-md transition text-xs font-semibold bg-deriv-red text-white shadow-xs";
+        } else {
+          btn.className = "px-2.5 py-1 rounded-md transition text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200";
+        }
+
+        // Update step nodes
+        const icon = document.getElementById('step-icon-' + i);
+        if (i < num) {
+          icon.className = "w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center font-bold text-sm shadow-sm ring-4 ring-emerald-50";
+          icon.textContent = "✓";
+        } else if (i === num) {
+          icon.className = "w-10 h-10 rounded-full bg-deriv-red text-white flex items-center justify-center font-bold text-sm shadow-md pulse-glow ring-4 ring-deriv-redLight";
+          icon.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>`;
+        } else {
+          icon.className = "w-10 h-10 rounded-full bg-slate-100 text-slate-400 border border-slate-300 flex items-center justify-center font-bold text-sm";
+          icon.textContent = i;
+        }
+      }
+    }
+
+    function toggleModal() {
+      const modal = document.getElementById('update-modal');
+      modal.classList.toggle('hidden');
+    }
+
+    function saveModal() {
+      alert("Sent directly to Sarah from Tech Recruiting!");
+      toggleModal();
+    }
+  </script>
+
+</body>
+</html>
